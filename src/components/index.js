@@ -1,4 +1,4 @@
-import HomePage from './HomePage.vue'
+import HomePage from '../pages/HomePage.vue'
 import AppInstruction from './AppInstruction.vue'
 
 const components = [
