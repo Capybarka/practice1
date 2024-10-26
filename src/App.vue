@@ -1,10 +1,14 @@
 <template>
   <v-app class="pa-5">
-   <v-main>
-    <router-view></router-view>
-   </v-main>
+    <v-container>
+      <nav-bar></nav-bar>
+
+      <v-main>
+        <router-view></router-view>
+      </v-main>
+
+    </v-container>
   </v-app>
- 
 </template>
 
 <script setup>
