@@ -1,7 +1,7 @@
 <template>
-  <v-card class="pa-4" color="background-light">
+  <v-card class="pa-4" variant="tonal">
     <h2 class="title">Рассчитайте, кто сколько должен за обед или ужин вместе с друзьями</h2>
-    <v-stepper hide-actions editable :items="['Шаг 1', 'Шаг 2', 'Шаг 3']">
+    <v-stepper bg-color="background-light" hide-actions editable :items="['Шаг 1', 'Шаг 2', 'Шаг 3']">
       <template v-slot:item.1>
         <v-card title="Добавление персон"><p class="pa-4">Добавьте каждого, кто участвовал в обеде или ужине</p> </v-card>
       </template>

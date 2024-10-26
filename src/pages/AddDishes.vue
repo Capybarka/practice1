@@ -8,17 +8,24 @@
                </v-btn>
                <!-- при нажатии на кнопку добавления добавится инпут -->
           </v-card>
+
           <dish-card class="mb-5"></dish-card>
+
           <v-row justify="center">
-                    <v-col cols="auto">
-                         <v-btn @click="goToAddDishesPage" variant="outlined" color="primary">Далее</v-btn>
-                    </v-col>
-          </v-row>   
+               <v-col cols="auto">
+                    <v-btn variant="outlined" color="primary">Назад</v-btn>
+               </v-col>
+
+               <v-col cols="auto">
+                    <v-btn variant="outlined" color="primary">Далее</v-btn>
+               </v-col>
+          </v-row> 
+          
+          
     </div>
 </template>
 
 <script setup>
-
 </script>
 
 <style lang="scss" scoped>
