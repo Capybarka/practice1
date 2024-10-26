@@ -4,9 +4,14 @@
           <div class="header__container">
             <h1>Делим Счёт</h1>
             <div class="header__btns">
-              <v-btn variant="tonal" icon class="mr-5">
+              <v-btn variant="tonal" class="mr-5" icon>
+                <v-icon>mdi-home</v-icon>
+              </v-btn>
+
+              <v-btn variant="tonal" class="mr-5" icon>
                 <v-icon>mdi-account</v-icon>
               </v-btn>
+        
               <v-btn @click="toggleTheme" variant="tonal" icon>
                 <v-icon>mdi-flare</v-icon>
               </v-btn>

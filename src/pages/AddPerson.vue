@@ -9,22 +9,7 @@
                     <!-- при нажатии на кнопку добавления добавится инпут с кнопка добавить -->
                </v-card>
 
-               <div class="addPerson_input">
-                    <v-text-field  label="Имя">
-                         <template v-slot:prepend>
-                              <v-icon>
-                                   mdi-account-check
-                              </v-icon>
-                         </template>
-
-                         <template v-slot:append>
-                              <v-icon color="red">
-                                   mdi-delete
-                              </v-icon>
-                         </template>     
-                    </v-text-field>
-                    <!-- <v-btn></v-btn> -->
-               </div>
+              <person-card></person-card>
 
                <v-row justify="center">
                     <v-col cols="auto">
@@ -39,14 +24,12 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 
-
-
 const goToAddDishesPage = () => router.push('/AddPerson/AddDishes')
 </script>
 
 <style lang="scss" scoped>
 .addPerson {
-     &__title{
+     &__title {
           display: flex;
      }
 }
