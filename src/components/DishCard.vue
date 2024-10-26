@@ -40,28 +40,32 @@
           </v-card>
 
           <!-- кто ел и пил -->
-          <!-- <v-card variant="tonal" class="px-10 py-5">
-               <v-checkbox-group v-model="selectedUsers">
-                    <v-checkbox
-                         v-for="user in users" 
-                         :key="user"
-                         :label="user"
-                         :value="user"
-                         >
-                    </v-checkbox>
-               </v-checkbox-group>
-          </v-card> -->
-          <v-row>
-               <v-col cols="12" v-for="user in users" :key="user">
-                    <v-checkbox
-                         :label="user"
-                         :value="user"
-                         v-model="selectedUsers"
-                    ></v-checkbox>
-               </v-col>
-          </v-row>
-
-          <p>{{ selectedUsers }}</p>
+          <v-expansion-panels bg-color="background-light" variant="accordion">
+               <v-expansion-panel
+                    title="Отметьте тех, кто вкусил">
+                    <v-expansion-panel-text>
+                         
+                              <div class="payer__wrapper">
+                                   <v-checkbox
+                                        :label="'Все'"
+                                        :value="all"
+                                        v-model="selectedUsers"
+                                        dense
+                                   ></v-checkbox>
+                                   
+                                   <v-checkbox
+                                        v-for="user in users"
+                                        :key="user"
+                                        :label="user"
+                                        :value="user"
+                                        v-model="selectedUsers"
+                                        dense
+                                   ></v-checkbox>
+                              </div>
+               
+                    </v-expansion-panel-text>
+               </v-expansion-panel>
+          </v-expansion-panels>
 
           <v-dialog
                v-model="dialog"
@@ -92,7 +96,7 @@ const dialog = ref(false)
 
 const selectedPayer = ref(null); // кто платил
 
-const users = reactive(['user1', 'user2', 'user3'])
+const users = reactive(['user1', 'user2', 'user3', 'user4', 'user5'])
 
 // кто ел и пил
 const selectedUsers = ref([]);
@@ -114,6 +118,12 @@ const selectedUsers = ref([]);
           padding: 80px;
           color: black;
      }
+}
+
+.payer__wrapper{
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
 }
 
 </style>

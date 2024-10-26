@@ -45,6 +45,7 @@ const darkTheme = {
      colors: {
           background: '#252525',
           'background-light': '#878787',
+          
           // primary: '#ba657a',
           primary: '#ae84bf',
           // 'second-primary': '#f0e9ae',
