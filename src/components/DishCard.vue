@@ -25,7 +25,8 @@
                          <v-btn
                               @click="dialog = true"
                               variant="outlined" 
-                              append-icon="mdi-cursor-default-click">
+                              color="primary">
+                              <v-icon class="mr-3">mdi-cursor-default-click</v-icon>
                               Выберите плательщика
                          </v-btn>
 
@@ -54,10 +55,10 @@
                                    ></v-checkbox>
 
                                    <v-checkbox
-                                        v-for="user in users"
-                                        :key="user"
-                                        :label="user"
-                                        :value="user"
+                                        v-for="user in MyStore.users"
+                                        :key="user.id"
+                                        :label="user.name"
+                                        :value="user.name"
                                         v-model="selectedUsers"
                                         dense
                                    ></v-checkbox>
@@ -71,12 +72,12 @@
                v-model="dialog"
                width="auto">
                <v-card class="dialog-payer_content" color="background-light">
-                    <v-radio-group v-model="selectedPayer" :mandatory="true">
+                    <v-radio-group v-model="selectedPayer">
                          <p class="dialog-payer_title">Выберите того, кто платил за блюдо</p>
                         <v-radio
-                              v-for="user in users" :key="user"
-                              :label="user"
-                              :value="user">
+                              v-for="user in MyStore.users" :key="user.name"
+                              :label="user.name"
+                              :value="user.name">
                         </v-radio>
                     </v-radio-group>
                </v-card>
@@ -86,13 +87,13 @@
 
 <script setup>
 import {ref, reactive } from 'vue';
+import { useMyStore } from '../stores/MyStore';
 
 defineOptions({
      name: 'dish-card'
 })
 
 const dialog = ref(false)
-// тут будет массив юзеров
 
 const selectedPayer = ref(null); // кто платил
 
@@ -100,6 +101,9 @@ const users = reactive(['user1', 'user2', 'user3', 'user4', 'user5'])
 
 // кто ел и пил
 const selectedUsers = ref([]);
+
+
+const MyStore = useMyStore()
 </script>
 
 

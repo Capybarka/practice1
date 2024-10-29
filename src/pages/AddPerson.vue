@@ -14,13 +14,13 @@
                <person-form class="mb-10"></person-form>
 
                 <empty-message v-show="MyStore.users.length === 0">Пока никого нет</empty-message>
-
-                <person-card
+       
+               <person-card
                     v-for="user in users"
                     :key="user.id"
-                    :name="user.name"
+                    :user="user"
                     class="mb-5"
-                ></person-card>
+               ></person-card>                      
           </v-card>
           
           <v-row justify="center">
@@ -31,10 +31,7 @@
           
           <v-row class="warning-row">
                <v-col>
-                    <app-warning
-                         :title="'Не у всех есть имена'" 
-                         :type="'warning'">
-                    </app-warning>
+                    <app-warning></app-warning>
                </v-col>
           </v-row>
      </div>
@@ -48,14 +45,15 @@ const MyStore = useMyStore()
 
 const users = MyStore.users
 
-
-
-
 const router = useRouter()
 
 const goToAddDishesPage = () => {
-     // router.push('/AddDishes')
-     MyStore.showWarning()
+     if (users.length < 2) {
+          MyStore.showWarning('Добавьте как-минимум 2 человека!')
+     }  
+     else {
+          router.push('/AddDishes')
+     }
 }
 
 </script>
@@ -70,5 +68,6 @@ const goToAddDishesPage = () => {
 .persons-list {
      min-height: 60vh;
 }
+
 
 </style>

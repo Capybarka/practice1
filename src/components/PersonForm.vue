@@ -15,7 +15,13 @@
 
           <v-row justify="center">
                <v-col cols="11">
-                    <v-btn @click="addPerson" block variant="tonal">Добавить</v-btn>
+                    <v-btn @click="addPerson"
+                         block
+                         color="primary"
+                         class="add-btn" 
+                         variant="tonal">
+                         Добавить
+                    </v-btn>
                </v-col>
           </v-row>
           
@@ -43,10 +49,15 @@ const addPerson = () => {
           })
           personId.value++
           personName.value = ''
-          
+    }
+    else {
+          MyStore.showWarning('Введите имя!')
     }
 }
 </script>
 
 <style lang="scss" scoped>
+.add-btn {
+     font-weight: 600;
+}
 </style>

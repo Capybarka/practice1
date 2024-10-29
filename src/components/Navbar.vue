@@ -54,7 +54,7 @@ watch(() => theme.global.value, updateThemeColors);
 </script>
 
 <style lang="scss">
-@import '../styles/main.scss';
+@import '../styles/variables.scss';
 
 .header__container{
   display: flex;

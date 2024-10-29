@@ -2,34 +2,23 @@
     <v-alert 
           v-if="MyStore.isShowWarning"
           class="warning"
-          :type="type">
-          <v-alert-title class="warning_text">{{ title }}</v-alert-title>
+          :type="warningType">
+          <v-alert-title class="warning_text">{{ warningText }}</v-alert-title>
      </v-alert>
 </template>
 
 <script setup>
 import { useMyStore } from '../stores/MyStore';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 defineOptions({
      name: 'app-warning'
 })
 
-const props = defineProps({
-     title: {
-          type: String,
-          required: true
-     },
-     type: {
-          type: String,
-          required: false,
-          default: 'warning'
-     }
-})
-
 const MyStore = useMyStore()  
 
-
+const warningText= computed(() => MyStore.warningText)
+const warningType  = computed(() => MyStore.warningType)
 
 </script>
 

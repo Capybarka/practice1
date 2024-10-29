@@ -21,14 +21,28 @@ export const useMyStore = defineStore('MyStore', () => {
           localStorage.setItem('users', JSON.stringify(users)); 
      }
 
+      // удаление юзера
+     const deleteUser = (id) => {
+          const idx = users.findIndex(user => user.id === id)
+          if (idx !== -1) {
+               users.splice(idx, 1)
+               localStorage.setItem('users', JSON.stringify(users));
+          }
+     }
 
 
-     // управление warning
+
+     // управление warning - вынести
      const isShowWarning = ref(false)
+     const warningText = ref('')
+     const warningType = ref('')
 
-     const showWarning = () => {
+     const showWarning = (text, type = 'warning') => {
+          warningText.value = text
+          warningType.value = type
+
           isShowWarning.value = true;
-     
+          
           setTimeout(() => {
                isShowWarning.value = false;
           }, 3000)
@@ -42,7 +56,10 @@ export const useMyStore = defineStore('MyStore', () => {
           users,
           isShowWarning,
           showWarning,
+          warningText,
+          warningType,
           addUser,
-          loadUsersFromStorage
+          loadUsersFromStorage,
+          deleteUser
      }
 })
