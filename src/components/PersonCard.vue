@@ -1,7 +1,7 @@
 <template>
      <div>
           <v-text-field 
-          class="add-person-input"
+               class="add-person-input"
                label="Имя"
                variant="outlined">
                <template v-slot:prepend>

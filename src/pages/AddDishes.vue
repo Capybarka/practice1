@@ -14,13 +14,29 @@
 
           <v-card
                variant="tonal"
-               class="dishes-list pa-5 mb-5">
-
+               class="dishes-list pa-5 mb-5"
+               elevation="10">
+               
                <empty-message>Пока ничего нет</empty-message>
 
-               <!-- <dish-card class="mb-5"></dish-card> -->
+               <dish-card class="mb-5"></dish-card>
           </v-card>
-          
+
+          <v-row justify="center">
+               <v-col cols="12">
+                    <v-card
+                         variant="tonal"
+                         class="total_card pa-4">
+                         <div class="total__wrapper">
+                              <p class="total_title">Промежуточный итог:</p>
+                              <p class="total_info">
+                                   {{ 0 }}
+                                   <v-icon>mdi-currency-rub</v-icon>
+                              </p>
+                         </div>
+                    </v-card>
+               </v-col>
+          </v-row>
 
           <v-row justify="center">
                <v-col cols="auto">
@@ -39,7 +55,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 
-const goToResultPage = () => router.push('/AddPerson/AddDishes/Result')
+const goToResultPage = () => router.push('/Result')
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +66,23 @@ const goToResultPage = () => router.push('/AddPerson/AddDishes/Result')
 }
 
 .dishes-list{
-     min-height: 60vh;
+     min-height: 50vh;
 }
+
+.total {
+     &__wrapper{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+     }
+
+     &_title {
+          margin-bottom: 10px;
+     }
+
+     &_card {
+          box-shadow: 1px 1px 15px rgb(20, 20, 20);
+     }
+} 
+
 </style>

@@ -11,10 +11,13 @@
                     <!-- при нажатии на кнопку добавления добавится инпут с кнопка добавить -->
                </v-card>
 
-               <v-card variant="tonal" class="persons-list pa-5 mb-5">
+               <v-card 
+                    variant="tonal" 
+                    class="persons-list pa-5 mb-5"
+                    elevation="10">
                     <empty-message>Пока никого нет</empty-message>
                     
-                    <!-- <person-card></person-card> -->
+                    <person-card></person-card>
                </v-card>
               
 
@@ -31,7 +34,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 
-const goToAddDishesPage = () => router.push('/AddPerson/AddDishes')
+const goToAddDishesPage = () => router.push('/AddDishes')
 </script>
 
 <style lang="scss" scoped>

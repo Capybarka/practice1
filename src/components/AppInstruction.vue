@@ -30,4 +30,8 @@ defineOptions({
   color: white;
   text-shadow: 2px 2px 10px rgb(27, 27, 27);
 }
+
+.text-white {
+  color: white;
+}
 </style>

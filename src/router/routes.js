@@ -14,11 +14,11 @@ const routes = [
         component: AddPerson
       },
       {
-        path: '/AddPerson/AddDishes',
+        path: '/AddDishes',
         component: AddDishes
       },
       {
-        path: '/AddPerson/AddDishes/Result',
+        path: '/Result',
         component: ResultPage
       }
 ]
