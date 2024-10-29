@@ -52,7 +52,7 @@
                                         v-model="selectedUsers"
                                         dense
                                    ></v-checkbox>
-                                   
+
                                    <v-checkbox
                                         v-for="user in users"
                                         :key="user"

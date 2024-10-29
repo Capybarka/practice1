@@ -1,16 +1,13 @@
 <template>
   <v-app class="pa-5">
     <v-container class="container">
-      <nav-bar></nav-bar>
+      <nav-bar class="mb-5"></nav-bar>
 
       <v-main>
         <router-view></router-view>
       </v-main>
     </v-container>
-    
-   
   </v-app>
- 
 </template>
 
 <script setup>
@@ -19,7 +16,7 @@
 
 <style lang="scss" scoped>
 .container{
-  max-width: 1400px;
+  max-width: 1200px;
 }
 
 </style>

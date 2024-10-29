@@ -1,7 +1,9 @@
 <template>
-     <div class="addPerson_input">
+     <div>
           <v-text-field 
-               label="Имя">
+          class="add-person-input"
+               label="Имя"
+               variant="outlined">
                <template v-slot:prepend>
                     <v-icon>
                          mdi-account-check
@@ -24,5 +26,4 @@ defineOptions({
 </script>
 
 <style lang="scss" scoped>
-
 </style>
