@@ -2,7 +2,7 @@
      <div class="person-card__wrapper">
           <v-card class="person-card px-5 py-3" variant="tonal">
               <v-card-title class="person-card_title">
-                    <p>name</p>
+                    <p>{{name}}</p>
                     <v-icon color="red">
                          mdi-delete
                     </v-icon>  
@@ -14,6 +14,13 @@
 <script setup>
 defineOptions({
      name: 'person-card'
+})
+
+defineProps({
+     name: {
+          type: String,
+          required: true
+     }
 })
 </script>
 

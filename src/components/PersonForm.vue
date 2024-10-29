@@ -4,8 +4,7 @@
                class="add-person-input"
                label="Имя"
                variant="outlined"
-               v-model="personName"
-               @input="addPersonEmit">
+               v-model="personName">
 
                <template v-slot:prepend>
                     <v-icon>
@@ -16,7 +15,7 @@
 
           <v-row justify="center">
                <v-col cols="11">
-                    <v-btn block variant="tonal">Добавить</v-btn>
+                    <v-btn @click="addPerson" block variant="tonal">Добавить</v-btn>
                </v-col>
           </v-row>
           
@@ -25,17 +24,27 @@
 
 <script setup>
 import {ref, reactive} from 'vue'
+import { useMyStore } from '../stores/MyStore';
 
 defineOptions({
      name: 'person-form'
 })
 
+const MyStore = useMyStore()
+
 const personName = ref('')
+const personId = ref(1)
 
-const addPersonEmit = () => {
-     if (personName) {
-
-     }
+const addPerson = () => {
+    if (personName.value) {
+          MyStore.addUser({
+               id: personId.value,
+               name: personName.value
+          })
+          personId.value++
+          personName.value = ''
+          
+    }
 }
 </script>
 

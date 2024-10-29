@@ -10,13 +10,17 @@
                variant="tonal" 
                class="persons-list pa-5 mb-5"
                elevation="10">
-              
           
-               <person-form></person-form>
+               <person-form class="mb-10"></person-form>
 
-                <empty-message>Пока никого нет</empty-message>
+                <empty-message v-show="MyStore.users.length === 0">Пока никого нет</empty-message>
 
-                <person-card></person-card>
+                <person-card
+                    v-for="user in users"
+                    :key="user.id"
+                    :name="user.name"
+                    class="mb-5"
+                ></person-card>
           </v-card>
           
           <v-row justify="center">
