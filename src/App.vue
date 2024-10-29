@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-// Саша дурачок
+// Саша  дурачок   
 </script>
 
 <style lang="scss" scoped>
