@@ -2,7 +2,7 @@
     <v-row justify="center">
         <v-col >
           <div class="header__container">
-            <h1>Делим Счёт</h1>
+            <h1 class="title">Делим Счёт</h1>
             <div class="header__btns">
               <v-btn variant="tonal" class="mr-5" icon>
                 <v-icon>mdi-home</v-icon>
@@ -54,10 +54,16 @@ watch(() => theme.global.value, updateThemeColors);
 </script>
 
 <style lang="scss">
+@import '../styles/main.scss';
+
 .header__container{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.title {
+  color: $text-primary;
 }
 </style>
 

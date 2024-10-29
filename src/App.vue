@@ -1,10 +1,11 @@
 <template>
-  <v-app class="pa-5">
+  <v-app class="app pa-5">
     <v-container class="container">
       <nav-bar class="mb-5"></nav-bar>
 
-      <v-main>
+      <v-main class="main">
         <router-view></router-view>
+        
       </v-main>
     </v-container>
   </v-app>
@@ -18,5 +19,4 @@
 .container{
   max-width: 1200px;
 }
-
 </style>

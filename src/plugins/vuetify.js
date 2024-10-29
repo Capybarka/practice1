@@ -47,7 +47,8 @@ const darkTheme = {
           'background-light': '#656565',
           
           // primary: '#ba657a',
-          primary: '#ae84bf',
+          primary: '#FB8C00',
+          warning: '#FB8C00'
           // 'second-primary': '#f0e9ae',
           // 'text-common': '#FFFFFF',
           // 'surface-bright': '#FFFFFF',

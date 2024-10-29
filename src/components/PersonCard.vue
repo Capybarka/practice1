@@ -1,9 +1,12 @@
 <template>
-     <div>
+     <div class="person-card-wrapper">
           <v-text-field 
                class="add-person-input"
                label="Имя"
-               variant="outlined">
+               variant="outlined"
+               v-model="personName"
+               @input="addPersonEmit">
+
                <template v-slot:prepend>
                     <v-icon>
                          mdi-account-check
@@ -20,10 +23,21 @@
 </template>
 
 <script setup>
+import {ref, reactive} from 'vue'
+
 defineOptions({
      name: 'person-card'
 })
+
+const personName = ref('')
+
+const addPersonEmit = () => {
+     if (personName) {
+
+     }
+}
 </script>
 
 <style lang="scss" scoped>
+
 </style>

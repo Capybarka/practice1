@@ -4,6 +4,7 @@ import Navbar from './Navbar.vue'
 import DishCard from './DishCard.vue'
 import PersonCard from './PersonCard.vue'
 import EmptyMessage from './EmptyMessage.vue'
+import AppWarning from './AppWarning.vue'
 
 const components = [
      HomePage,
@@ -11,7 +12,8 @@ const components = [
      Navbar,
      DishCard,
      PersonCard,
-     EmptyMessage
+     EmptyMessage,
+     AppWarning
 ]
 
 export default components
