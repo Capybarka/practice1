@@ -1,43 +1,27 @@
 <template>
-     <div class="person-card-wrapper">
-          <v-text-field 
-               class="add-person-input"
-               label="Имя"
-               variant="outlined"
-               v-model="personName"
-               @input="addPersonEmit">
-
-               <template v-slot:prepend>
-                    <v-icon>
-                         mdi-account-check
-                    </v-icon>
-               </template>
-
-               <template v-slot:append>
+     <div class="person-card__wrapper">
+          <v-card class="person-card px-5 py-3" variant="tonal">
+              <v-card-title class="person-card_title">
+                    <p>name</p>
                     <v-icon color="red">
                          mdi-delete
-                    </v-icon>
-               </template>     
-          </v-text-field>
+                    </v-icon>  
+               </v-card-title>
+          </v-card>
      </div>
 </template>
 
 <script setup>
-import {ref, reactive} from 'vue'
-
 defineOptions({
      name: 'person-card'
 })
-
-const personName = ref('')
-
-const addPersonEmit = () => {
-     if (personName) {
-
-     }
-}
 </script>
 
 <style lang="scss" scoped>
-
+.person-card {
+     &_title{
+          display: flex;
+          justify-content: space-between;
+     } 
+}
 </style>

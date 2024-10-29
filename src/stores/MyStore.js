@@ -2,7 +2,8 @@ import { defineStore } from "pinia";
 import { ref, reactive } from "vue";
 
 export const useMyStore = defineStore('MyStore', () => {
-     const users = reactive([{name: 'Marina'}, {name: "Dasha"}])
+     
+     const users = reactive([])
 
      // управление warning
      const isShowWarning = ref(false)
