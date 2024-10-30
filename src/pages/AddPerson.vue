@@ -1,33 +1,36 @@
 <template>
-     <div class="add-person__wrapper">
+     <div>
           <v-sheet 
-               class="add-person__title pa-4 mb-5" 
-               color="background-light">
-               <v-card-title>Добавьте участников</v-card-title>
+               class="add-person__title pa-4 mb-5 elevation-5" 
+               color="background-dark rounded-xl"
+          >
+               <p class="text-primary font-weight-bold">Добавьте участников</p>
           </v-sheet>
 
-          <v-card 
-               class="persons-list pa-5 mb-5"
-               variant="tonal" 
-               elevation="10">
-               <person-form class="mb-10"></person-form>
-                <empty-message v-show="MyStore.users.length === 0">Пока никого нет</empty-message>
-       
+          <v-sheet 
+            class="persons-list pa-5 mb-10 rounded-xl elevation-5"
+            color="background-dark"
+          >
+               <PersonForm class="mb-10"/> 
+               <empty-message v-show="MyStore.users.length === 0">Пока никого нет</empty-message>
                <person-card
                     v-for="user in users"
                     class="mb-5"
                     :key="user.id"
                     :user="user"
                ></person-card>                      
-          </v-card>
+          </v-sheet>
           
           <v-row justify="center">
                <v-col cols="auto">
-                    <v-btn 
-                         variant="outlined" 
+                    <v-btn  
                          color="primary"
-                         @click="goToAddDishesPage">
-                         Далее
+                         class="elevation-5"
+                         @click="goToAddDishesPage"
+                    >
+                         <p class="mr-2">Далее</p>
+                         <v-icon>mdi-hand-pointing-right</v-icon>
+                         
                     </v-btn>
                </v-col>
           </v-row>  
@@ -43,6 +46,8 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { useMyStore } from '../stores/MyStore'
+import PersonForm from '../components/PersonForm.vue';
+import PersonCard from '../components/PersonCard.vue';
 
 const MyStore = useMyStore()
 

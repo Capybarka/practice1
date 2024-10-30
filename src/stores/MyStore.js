@@ -5,7 +5,6 @@ export const useMyStore = defineStore('MyStore', () => {
 
      const users = reactive([])
 
-     // загрузка из localStorage 
      const loadUsersFromStorage = () => {
           const storedUsers = localStorage.getItem('users')
           if (storedUsers) {
@@ -15,13 +14,11 @@ export const useMyStore = defineStore('MyStore', () => {
 
      loadUsersFromStorage()
 
-     // добавление юзера
      const addUser = (user) => {
           users.push(user)
           localStorage.setItem('users', JSON.stringify(users)); 
      }
 
-      // удаление юзера
      const deleteUser = (id) => {
           const idx = users.findIndex(user => user.id === id)
           if (idx !== -1) {
@@ -30,9 +27,6 @@ export const useMyStore = defineStore('MyStore', () => {
           }
      }
 
-
-
-     // управление warning - вынести
      const isShowWarning = ref(false)
      const warningText = ref('')
      const warningType = ref('')
@@ -47,11 +41,7 @@ export const useMyStore = defineStore('MyStore', () => {
                isShowWarning.value = false;
           }, 3000)
      }
-     // управление warning конец
-
-
-     
-
+    
      return {
           users,
           isShowWarning,

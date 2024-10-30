@@ -17,8 +17,6 @@
                </template>           
           </v-text-field>
 
-          <!-- плательщик -->
-           
           <v-card variant="tonal" class="px-10 py-5 mb-5">
                <v-row align="center">
                     <v-col cols="auto">
@@ -30,7 +28,6 @@
                               Выберите плательщика
                          </v-btn>
 
-                         <!-- будет видно только есть selectedItem !== null -->
                          <span 
                               v-show="selectedPayer" 
                               class="mx-5">
@@ -40,7 +37,6 @@
                </v-row>
           </v-card>
 
-          <!-- кто ел и пил -->
           <v-expansion-panels bg-color="background-light" variant="accordion">
                <v-expansion-panel
                     title="Отметьте тех, кто вкусил">

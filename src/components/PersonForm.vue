@@ -1,11 +1,11 @@
 <template>
-     <div class="person-card-wrapper">
+     <div>
           <v-text-field 
                class="add-person-input"
                label="Имя"
                variant="outlined"
-               v-model="personName">
-
+               v-model="personName"
+          >
                <template v-slot:prepend>
                     <v-icon>
                          mdi-account-check
@@ -19,7 +19,7 @@
                          block
                          color="primary"
                          class="add-btn" 
-                         variant="tonal">
+                    >
                          Добавить
                     </v-btn>
                </v-col>
@@ -31,10 +31,6 @@
 <script setup>
 import {ref, reactive} from 'vue'
 import { useMyStore } from '../stores/MyStore';
-
-defineOptions({
-     name: 'person-form'
-})
 
 const MyStore = useMyStore()
 

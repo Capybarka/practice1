@@ -1,7 +1,8 @@
 <template>
-      <v-card 
-      class="d-flex pa-5 rounded-xl"
-      variant="tonal">
+      <v-sheet 
+        color="background-light"
+        class="d-flex pa-5 rounded-xl elevation-10"
+        >
       <v-chip
         color="primary"
         class="pa-8 mr-4"  
@@ -12,10 +13,7 @@
       </v-chip>
 
      <div>
-       <p 
-         class="medium-text font-weight-bold mb-3" 
-         :style="{ color: theme.global.current.value.colors.primary }"
-       >
+       <p class="medium-text font-weight-bold mb-3 text-primary">
          <slot name="title"></slot>
        </p>
           
@@ -24,14 +22,11 @@
        </p>
       </div>
       
-    </v-card>
+    </v-sheet>
 </template>
 
 <script setup>
-import { useTheme } from 'vuetify';
-const theme = useTheme();
 </script>
 
 <style lang="scss" scoped>
-
 </style>

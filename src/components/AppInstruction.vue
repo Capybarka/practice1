@@ -1,11 +1,10 @@
 <template>
   <v-sheet 
     color="background-dark"
-    class="pa-5 mb-10 rounded-xl"
+    class="pa-5 mb-10 rounded-xl elevation-10"
   >
     <h1 
-      class="align-center mb-5 large-text" 
-      :style="{ color: theme.global.current.value.colors.primary }"
+      class="align-center mb-5 large-text text-primary" 
       >
       Чекдели
     </h1>
@@ -14,7 +13,7 @@
 
   <v-sheet
     color="background-dark"
-    class="px-5 py-10 rounded-xl"
+    class="px-5 py-10 rounded-xl elevation-10"
   >
    <instruction-step class="mb-10">
     <template v-slot:number>
