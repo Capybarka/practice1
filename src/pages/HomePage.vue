@@ -10,13 +10,14 @@
 
       <v-row justify="center">
         <v-col cols="3">
-          <v-btn @click="goToAddPesonPage" variant="outlined" block color="primary">Начать</v-btn>
+          <v-btn @click="goToAddPesonPage" block color="primary">Начать</v-btn>
         </v-col>
       </v-row>
     </v-container>
 </template>
 
 <script setup>
+import AppInstruction from '../components/AppInstruction.vue';
 defineOptions({
      name: 'home-page'
 })
