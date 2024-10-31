@@ -29,10 +29,19 @@
                <v-col cols="auto">
                     <v-btn  
                          color="primary"
+                         class="elevation-5 mr-5"
+                         @click="NavigationStore.goToHomePage"
+                    >
+                         <v-icon>mdi-hand-pointing-left</v-icon>
+                         <p class="ml-5">Назад</p>
+                    </v-btn>
+
+                    <v-btn  
+                         color="primary"
                          class="elevation-5"
                          @click="goToAddDishes"
                     >
-                         <p class="mr-2">Далее</p>
+                         <p class="mr-5">Далее</p>
                          <v-icon>mdi-hand-pointing-right</v-icon>
                     </v-btn>
                </v-col>
@@ -62,7 +71,6 @@ const NavigationStore = useNavigationStore()
 
 const addPerson = (person) => {
      PersonStore.addPerson(person)
-     console.log(PersonStore.persons)
 }
 
 const goToAddDishes = () => {
@@ -73,6 +81,7 @@ const goToAddDishes = () => {
           NavigationStore.goToAddDishesPage()
      }
 }
+
 
 </script>
 

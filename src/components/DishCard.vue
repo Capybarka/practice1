@@ -61,12 +61,13 @@
                                    </v-checkbox>
 
                                    <v-checkbox
-                                        v-for="user in PersonStore.users"
+                                        v-for="person in PersonStore.persons"
                                         v-model="selectedUsers"
                                         dense
-                                        :key="user.id"
-                                        :label="user.name"
-                                        :value="user.name"                                       
+                                        color="primary"
+                                        :key="person.id"
+                                        :label="person.name"
+                                        :value="person.name"                                       
                                    >
                                    </v-checkbox>
                               </div>
@@ -85,10 +86,10 @@
                     <v-radio-group v-model="selectedPayer">
                          <p class="font-weight-bold mb-5">Выберите того, кто платил за блюдо</p>
                          <v-radio
-                              v-for="user in PersonStore.users.value" 
-                              :key="user.name"
-                              :label="user.name"
-                              :value="user.name"
+                              v-for="person in PersonStore.persons" 
+                              :key="person.id"
+                              :label="person.name"
+                              :value="person.name"
                          >
                          </v-radio>
                     </v-radio-group>
