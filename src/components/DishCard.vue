@@ -40,14 +40,17 @@
                </v-row>
           </v-card>
 
-          <v-expansion-panels bg-color="background-dark" variant="accordion">
+          <v-expansion-panels 
+               bg-color="background-dark" 
+               variant="accordion"
+          >
                <v-expansion-panel >
                     <v-expansion-panel-title class="font-weight-bold">
                          Отметьте тех, кто вкусил
                     </v-expansion-panel-title>
 
                     <v-expansion-panel-text>
-                              <div class="payer__wrapper">
+                              <div class="d-flex flex-wrap ga-8">
                                    <v-checkbox
                                         dense
                                         color="primary"
@@ -58,7 +61,7 @@
                                    </v-checkbox>
 
                                    <v-checkbox
-                                        v-for="user in MyStore.users"
+                                        v-for="user in PersonStore.users"
                                         v-model="selectedUsers"
                                         dense
                                         :key="user.id"
@@ -73,7 +76,8 @@
 
           <v-dialog
                v-model="dialog"
-               width="auto">
+               width="auto"
+          >
                <v-card 
                     class="pa-10" 
                     color="background-light"
@@ -81,10 +85,11 @@
                     <v-radio-group v-model="selectedPayer">
                          <p class="font-weight-bold mb-5">Выберите того, кто платил за блюдо</p>
                          <v-radio
-                              v-for="user in MyStore.users" 
+                              v-for="user in PersonStore.users" 
                               :key="user.name"
                               :label="user.name"
-                              :value="user.name">
+                              :value="user.name"
+                         >
                          </v-radio>
                     </v-radio-group>
                </v-card>
@@ -94,9 +99,9 @@
 
 <script setup>
 import {ref, reactive } from 'vue';
-import { useMyStore } from '../stores/MyStore';
+import { usePersonStore } from '../stores/PersonStore';
 
-const MyStore = useMyStore()
+const PersonStore = usePersonStore()
 
 const dialog = ref(false)
 
@@ -105,23 +110,3 @@ const selectedPayer = ref(null); // кто платил
 const selectedUsers = ref([]);
 
 </script>
-
-
-<style lang="scss" scoped>
-@import '../styles/main.scss';
-
-.dialog-payer {
-
-     &_content {
-          padding: 80px;
-          color: black;
-     }
-}
-
-.payer__wrapper{
-     display: flex;
-     flex-wrap: wrap;
-     gap: 20px;
-}
-
-</style>
