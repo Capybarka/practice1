@@ -30,16 +30,16 @@
 
 <script setup>
 import {ref, reactive} from 'vue'
-import { useMyStore } from '../stores/MyStore';
+import {usePersonStore} from '../stores/PersonStore'
 
-const MyStore = useMyStore()
+const PersonStore = usePersonStore()
 
 const personName = ref('')
 const personId = ref(1)
 
 const addPerson = () => {
     if (personName.value) {
-          MyStore.addUser({
+          PersonStore.addUser({
                id: personId.value,
                name: personName.value
           })
@@ -47,7 +47,7 @@ const addPerson = () => {
           personName.value = ''
     }
     else {
-          MyStore.showWarning('Введите имя!')
+          PersonStore.showWarning('Введите имя!')
     }
 }
 </script>

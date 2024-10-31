@@ -7,7 +7,7 @@
                     <p>{{user.name}}</p>
                     <v-icon 
                          color="red"
-                         @click="MyStore.deleteUser(user.id)"
+                         @click="PersonStore.deleteUser(user.id)"
                     >
                          mdi-delete
                     </v-icon>  
@@ -17,7 +17,9 @@
 </template>
 
 <script setup>
-import { useMyStore } from '../stores/MyStore';
+import { usePersonStore } from '../stores/PersonStore';
+
+const PersonStore = usePersonStore()
 
 defineProps({
      user: {
@@ -25,7 +27,4 @@ defineProps({
           required: true
      }
 })
-
-const MyStore = useMyStore()
-
 </script>

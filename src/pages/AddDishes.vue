@@ -9,7 +9,12 @@
                     variant="tonal" 
                     icon
                >
-                    <v-icon color="primary">mdi-plus-box</v-icon>
+                    <v-icon 
+                         color="primary"
+                         @click="initDish"
+                    >
+                         mdi-plus-box
+                    </v-icon>
                </v-btn>
           </v-sheet>
 
@@ -81,4 +86,8 @@ import DishCard from '../components/DishCard.vue'
 
 const NavigationStore = useNavigationStore()
 const DishStore = useDishStore()
+
+const initDish = () => {
+     DishStore.initDish()
+}
 </script>

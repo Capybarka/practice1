@@ -4,12 +4,17 @@ import { ref } from "vue";
 export const useDishStore = defineStore('DishStore', () => {
     const dishes = ref([])
 
-    const addDish = () => {
-        dishes.push(Date.now())
+    const initDish = () => {
+        const newDish = {
+            id: Date.now(),
+            name: '',
+            price: '',
+            
+        }
     }
 
     return {
         dishes,
-        addDish
+        initDish
     }
 })

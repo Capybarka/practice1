@@ -12,9 +12,9 @@
             color="background-dark"
           >
                <PersonForm class="mb-10"/> 
-               <empty-message v-show="MyStore.users.length === 0">Пока никого нет</empty-message>
+               <empty-message v-show="PersonStore.users.length === 0">Пока никого нет</empty-message>
                <person-card
-                    v-for="user in MyStore.users"
+                    v-for="user in PersonStore.users"
                     class="mb-5"
                     :key="user.id"
                     :user="user"
@@ -45,10 +45,8 @@
 </template>
 
 <script setup>
-// import { useRouter } from 'vue-router'
-
 import { useWarningStore } from '../stores/WarningStore'
-import { useMyStore } from '../stores/MyStore'
+import { usePersonStore } from '../stores/PersonStore'
 import { useNavigationStore } from '../stores/NavigationStore'
 
 import PersonForm from '../components/PersonForm.vue';
@@ -56,18 +54,16 @@ import PersonCard from '../components/PersonCard.vue';
 import AppWarning from '../components/AppWarning.vue';
 import EmptyMessage from '../components/EmptyMessage.vue';
 
-const MyStore = useMyStore()
+const PersonStore = usePersonStore()
 const WarningStore = useWarningStore()
 const NavigationStore = useNavigationStore()
 
-// const router = useRouter()
 
 const goToAddDishesPage = () => {
-     if (MyStore.users.length < 2) {
+     if (PersonStore.users.length < 2) {
           WarningStore.showWarning('Добавьте как-минимум 2 человека!')
      }  
      else {
-          // router.push('/AddDishes')
           NavigationStore.goToAddDishesPage()
      }
 }
@@ -75,10 +71,7 @@ const goToAddDishesPage = () => {
 </script>
 
 <style lang="scss" scoped>
-
 .persons-list {
      min-height: 60vh;
 }
-
-
 </style>
