@@ -18,7 +18,8 @@
                     class="mb-5"
                     :key="user.id"
                     :user="user"
-               ></person-card>                      
+               >
+               </person-card>                      
           </v-sheet>
           
           <v-row justify="center">

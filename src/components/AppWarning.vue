@@ -1,7 +1,7 @@
 <template>
     <v-alert 
           v-if="WarningStore.isShowWarning"
-          class="warning"
+          class="warning w-50 position-fixed bottom-0"
           :type="warningType">
           <v-alert-title class="warning_text">{{ warningText }}</v-alert-title>
      </v-alert>
@@ -20,9 +20,6 @@ const warningType  = computed(() => WarningStore.warningType)
 
 <style lang="scss" scoped>
 .warning {
-     width: 50%;
-     position: fixed;
-     bottom: 20px;
      left: 50%;
      transform: translateX(-50%);
      z-index: 1000;
