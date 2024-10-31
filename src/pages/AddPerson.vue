@@ -11,10 +11,13 @@
             class="persons-list pa-5 mb-10 rounded-xl elevation-5"
             color="background-dark"
           >
-               <PersonForm class="mb-10"/> 
+               <PersonForm
+                    class="mb-10"
+                    :add-person-emit="addPerson"
+               /> 
                <empty-message v-show="PersonStore.users.length === 0">Пока никого нет</empty-message>
                <person-card
-                    v-for="user in PersonStore.users"
+                    v-for="user in PersonStore.users.value"
                     class="mb-5"
                     :key="user.id"
                     :user="user"
@@ -27,11 +30,10 @@
                     <v-btn  
                          color="primary"
                          class="elevation-5"
-                         @click="goToAddDishesPage"
+                         @click="goToAddDishes"
                     >
                          <p class="mr-2">Далее</p>
                          <v-icon>mdi-hand-pointing-right</v-icon>
-                         
                     </v-btn>
                </v-col>
           </v-row>  
@@ -54,14 +56,17 @@ import PersonCard from '../components/PersonCard.vue';
 import AppWarning from '../components/AppWarning.vue';
 import EmptyMessage from '../components/EmptyMessage.vue';
 
-const PersonStore = usePersonStore()
 const WarningStore = useWarningStore()
+const PersonStore = usePersonStore()
 const NavigationStore = useNavigationStore()
 
+const addPerson = (person) => {
+     PersonStore.addPerson(person)
+}
 
-const goToAddDishesPage = () => {
-     if (PersonStore.users.length < 2) {
-          WarningStore.showWarning('Добавьте как-минимум 2 человека!')
+const goToAddDishes = () => {
+     if (PersonStore.users.value.length < 2) {
+          WarningStore.showWarning('Добавьте хотя бы 2 человека!')
      }  
      else {
           NavigationStore.goToAddDishesPage()

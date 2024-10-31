@@ -31,18 +31,24 @@
 <script setup>
 import {ref, reactive} from 'vue'
 import {usePersonStore} from '../stores/PersonStore'
+import {defineEmits} from 'vue'
 
 const PersonStore = usePersonStore()
 
 const personName = ref('')
 const personId = ref(1)
 
+const emit = defineEmits(['add-person-emit'])
+
 const addPerson = () => {
     if (personName.value) {
-          PersonStore.addUser({
+          emit('add-person-emit', {
                id: personId.value,
                name: personName.value
-          })
+          } )
+          // PersonStore.addUser({
+              
+          // })
           personId.value++
           personName.value = ''
     }

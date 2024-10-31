@@ -85,7 +85,7 @@
                     <v-radio-group v-model="selectedPayer">
                          <p class="font-weight-bold mb-5">Выберите того, кто платил за блюдо</p>
                          <v-radio
-                              v-for="user in PersonStore.users" 
+                              v-for="user in PersonStore.users.value" 
                               :key="user.name"
                               :label="user.name"
                               :value="user.name"

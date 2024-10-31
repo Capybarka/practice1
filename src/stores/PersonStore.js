@@ -3,48 +3,33 @@ import { ref, reactive } from "vue";
 
 export const usePersonStore = defineStore('PersonStore', () => {
 
-     const users = reactive([])
+     const users = ref([])
 
      const loadUsersFromStorage = () => {
           const storedUsers = localStorage.getItem('users')
           if (storedUsers) {
-               users.push(...JSON.parse(storedUsers))
+               users.value.push(...JSON.parse(storedUsers))
           }
      }
 
      loadUsersFromStorage()
 
-     const addUser = (user) => {
-          users.push(user)
-          localStorage.setItem('users', JSON.stringify(users)); 
+     const addPerson = (user) => {
+          users.value.push(user)
+          localStorage.setItem('users', JSON.stringify(users.value)); 
      }
 
      const deleteUser = (id) => {
-          const idx = users.findIndex(user => user.id === id)
+          const idx = users.value.findIndex(user => user.id === id)
           if (idx !== -1) {
-               users.splice(idx, 1)
-               localStorage.setItem('users', JSON.stringify(users));
+               users.value.splice(idx, 1)
+               localStorage.setItem('users', JSON.stringify(users.value));
           }
      }
 
-     // const isShowWarning = ref(false)
-     // const warningText = ref('')
-     // const warningType = ref('')
-
-     // const showWarning = (text, type = 'warning') => {
-     //      warningText.value = text
-     //      warningType.value = type
-
-     //      isShowWarning.value = true;
-          
-     //      setTimeout(() => {
-     //           isShowWarning.value = false;
-     //      }, 3000)
-     // }
-    
      return {
           users,
-          addUser,
+          addPerson,
           loadUsersFromStorage,
           deleteUser
      }
