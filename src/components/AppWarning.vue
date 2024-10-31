@@ -1,6 +1,6 @@
 <template>
     <v-alert 
-          v-if="MyStore.isShowWarning"
+          v-if="WarningStore.isShowWarning"
           class="warning"
           :type="warningType">
           <v-alert-title class="warning_text">{{ warningText }}</v-alert-title>
@@ -8,17 +8,13 @@
 </template>
 
 <script setup>
-import { useMyStore } from '../stores/MyStore';
+import { useWarningStore } from '../stores/WarningStore';
 import { computed, ref } from 'vue';
 
-defineOptions({
-     name: 'app-warning'
-})
+const WarningStore = useWarningStore()  
 
-const MyStore = useMyStore()  
-
-const warningText= computed(() => MyStore.warningText)
-const warningType  = computed(() => MyStore.warningType)
+const warningText= computed(() => WarningStore.warningText)
+const warningType  = computed(() => WarningStore.warningType)
 
 </script>
 

@@ -27,27 +27,23 @@ export const useMyStore = defineStore('MyStore', () => {
           }
      }
 
-     const isShowWarning = ref(false)
-     const warningText = ref('')
-     const warningType = ref('')
+     // const isShowWarning = ref(false)
+     // const warningText = ref('')
+     // const warningType = ref('')
 
-     const showWarning = (text, type = 'warning') => {
-          warningText.value = text
-          warningType.value = type
+     // const showWarning = (text, type = 'warning') => {
+     //      warningText.value = text
+     //      warningType.value = type
 
-          isShowWarning.value = true;
+     //      isShowWarning.value = true;
           
-          setTimeout(() => {
-               isShowWarning.value = false;
-          }, 3000)
-     }
+     //      setTimeout(() => {
+     //           isShowWarning.value = false;
+     //      }, 3000)
+     // }
     
      return {
           users,
-          isShowWarning,
-          showWarning,
-          warningText,
-          warningType,
           addUser,
           loadUsersFromStorage,
           deleteUser

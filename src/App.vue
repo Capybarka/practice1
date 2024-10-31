@@ -1,6 +1,6 @@
 <template>
   <v-app class="pa-5">
-      <NavBar />
+      <Navbar />
 
       <v-main>
         <v-container>
@@ -12,7 +12,8 @@
 </template>
 
 <script setup>
-import NavBar from './components/NavBar.vue';
+// import NavBar from './components/NavBar.vue';
+import Navbar from './components/Navbar.vue'
 
 </script>
 

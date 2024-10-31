@@ -14,7 +14,7 @@
                <PersonForm class="mb-10"/> 
                <empty-message v-show="MyStore.users.length === 0">Пока никого нет</empty-message>
                <person-card
-                    v-for="user in users"
+                    v-for="user in MyStore.users"
                     class="mb-5"
                     :key="user.id"
                     :user="user"
@@ -45,19 +45,22 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+
+import { useWarningStore } from '../stores/WarningStore'
 import { useMyStore } from '../stores/MyStore'
+
 import PersonForm from '../components/PersonForm.vue';
 import PersonCard from '../components/PersonCard.vue';
+import AppWarning from '../components/AppWarning.vue'
 
 const MyStore = useMyStore()
-
-const users = MyStore.users
+const WarningStore = useWarningStore()
 
 const router = useRouter()
 
 const goToAddDishesPage = () => {
-     if (users.length < 2) {
-          MyStore.showWarning('Добавьте как-минимум 2 человека!')
+     if (MyStore.users.length < 2) {
+          WarningStore.showWarning('Добавьте как-минимум 2 человека!')
      }  
      else {
           router.push('/AddDishes')
