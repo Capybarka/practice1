@@ -1,11 +1,14 @@
 <template>
-     <div class="person-card__wrapper">
-          <v-card class="person-card px-5 py-3" variant="tonal">
-              <v-card-title class="person-card_title">
+     <div >
+          <v-card  
+               class="person-card px-5 py-3 rounded-xl elevation-5" 
+               variant="tonal">
+              <v-card-title class="person-card_title d-flex justify-space-between">
                     <p>{{user.name}}</p>
                     <v-icon 
-                         @click="MyStore.deleteUser(user.id)"
-                         color="red">
+                         color="red"
+                         @click="PersonStore.deleteUser(user.id)"
+                    >
                          mdi-delete
                     </v-icon>  
                </v-card-title>
@@ -14,11 +17,9 @@
 </template>
 
 <script setup>
-import { useMyStore } from '../stores/MyStore';
+import { usePersonStore } from '../stores/PersonStore';
 
-defineOptions({
-     name: 'person-card'
-})
+const PersonStore = usePersonStore()
 
 defineProps({
      user: {
@@ -26,16 +27,4 @@ defineProps({
           required: true
      }
 })
-
-const MyStore = useMyStore()
-
 </script>
-
-<style lang="scss" scoped>
-.person-card {
-     &_title{
-          display: flex;
-          justify-content: space-between;
-     } 
-}
-</style>

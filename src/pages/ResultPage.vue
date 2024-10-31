@@ -5,8 +5,8 @@
                class="pa-5 mb-5"
                color="background-light">
           
-               <h2 class="result-title">Результаты</h2>
-               <p class="result-text">Кто кому и сколько должен</p>
+               <h2 class="align-center mb-3">Результаты</h2>
+               <p class="align-center">Кто кому и сколько должен</p>
           </v-card>
 
           <v-card 
@@ -17,7 +17,13 @@
 
           <v-row justify="center">
                <v-col cols="auto">
-                    <v-btn variant="outlined" color="primary">На главную</v-btn>
+                    <v-btn 
+                         variant="outlined" 
+                         color="primary"
+                         @click="NavigationStore.goToHomePage"
+                    >
+                         На главную
+                    </v-btn>
                </v-col>
           </v-row>
          
@@ -25,21 +31,7 @@
 </template>
 
 <script setup>
+import {useNavigationStore} from '../stores/NavigationStore'
 
+const NavigationStore = useNavigationStore()
 </script>
-
-<style lang="scss" scoped>
-.result {
-     &-title, &-text {
-          text-align: center;
-     }
-
-     &-title{
-          margin-bottom: 10px;
-     }
-
-     &-content{
-          min-height: 60vh;
-     }
-}
-</style>

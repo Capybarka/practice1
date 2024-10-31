@@ -28,4 +28,23 @@ const router = createRouter({
      routes
 })
 
+window.addEventListener('beforeunload', () => {
+  const currentRoute = router.currentRoute.value.fullPath
+  localStorage.setItem('lastRoute', currentRoute)
+})
+
+router.beforeEach((to, from, next) => {
+  const lastRoute = localStorage.getItem('lastRoute')
+  localStorage.getItem('lastRoute', to.fullPath)
+  
+  if (lastRoute) {
+    next({ path: lastRoute })
+
+    localStorage.removeItem('lastRoute')
+  }
+  else {
+    next()
+  }
+})
+
 export default router

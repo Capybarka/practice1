@@ -1,27 +1,29 @@
 <template>
       <v-container>
+        <v-row>
+          <v-col 
+            cols="12"
+            class="pa-0 mb-10"
+          >
+            <AppInstruction />
+          </v-col>
+        </v-row>
+
+        <div class="d-flex justify-center">
+          <v-btn 
+            color="primary"
+            @click="goToAddPesonPage"
+          >
+            <p class="mr-2">Начать</p>
+            <v-icon>mdi-hand-pointing-right</v-icon>
+          </v-btn>
+        </div>
       
-
-      <v-row>
-        <v-col cols="12">
-          <app-instruction></app-instruction>
-        </v-col>
-      </v-row>
-
-      <v-row justify="center">
-        <v-col cols="3">
-          <v-btn @click="goToAddPesonPage" variant="outlined" block color="primary">Начать</v-btn>
-        </v-col>
-      </v-row>
     </v-container>
 </template>
 
 <script setup>
-defineOptions({
-     name: 'home-page'
-})
-
-import { onMounted, reactive, ref, watch } from 'vue'
+import AppInstruction from '../components/AppInstruction.vue';
 
 import { useRouter } from 'vue-router';
 
@@ -33,6 +35,3 @@ const goToAddPesonPage = () => router.push('/AddPerson')
 
 </script>
 
-<style lang="scss" scoped>
-
-</style>

@@ -1,31 +1,40 @@
 <template>
-     <div class="add-person__wrapper">
-          <v-card 
-               class="add-person__title pa-4 mb-5" 
-               color="background-light">
-               <v-card-title>Добавьте участников</v-card-title>
-          </v-card>
+     <div>
+          <v-sheet 
+               class="add-person__title pa-4 mb-5 elevation-5 rounded-xl" 
+               color="background-dark"
+          >
+               <p class="text-primary font-weight-bold">Добавьте участников</p>
+          </v-sheet>
 
-          <v-card 
-               variant="tonal" 
-               class="persons-list pa-5 mb-5"
-               elevation="10">
-          
-               <person-form class="mb-10"></person-form>
-
-                <empty-message v-show="MyStore.users.length === 0">Пока никого нет</empty-message>
-       
+          <v-sheet 
+            class="persons-list pa-5 mb-10 rounded-xl elevation-5"
+            color="background-dark"
+          >
+               <PersonForm
+                    class="mb-10"
+                    :add-person-emit="addPerson"
+               /> 
+               <empty-message v-show="PersonStore.users.length === 0">Пока никого нет</empty-message>
                <person-card
-                    v-for="user in users"
+                    v-for="user in PersonStore.users.value"
+                    class="mb-5"
                     :key="user.id"
                     :user="user"
-                    class="mb-5"
-               ></person-card>                      
-          </v-card>
+               >
+               </person-card>                      
+          </v-sheet>
           
           <v-row justify="center">
                <v-col cols="auto">
-                    <v-btn @click="goToAddDishesPage" variant="outlined" color="primary">Далее</v-btn>
+                    <v-btn  
+                         color="primary"
+                         class="elevation-5"
+                         @click="goToAddDishes"
+                    >
+                         <p class="mr-2">Далее</p>
+                         <v-icon>mdi-hand-pointing-right</v-icon>
+                    </v-btn>
                </v-col>
           </v-row>  
           
@@ -38,36 +47,36 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-import { useMyStore } from '../stores/MyStore'
+import { useWarningStore } from '../stores/WarningStore'
+import { usePersonStore } from '../stores/PersonStore'
+import { useNavigationStore } from '../stores/NavigationStore'
 
-const MyStore = useMyStore()
+import PersonForm from '../components/PersonForm.vue';
+import PersonCard from '../components/PersonCard.vue';
+import AppWarning from '../components/AppWarning.vue';
+import EmptyMessage from '../components/EmptyMessage.vue';
 
-const users = MyStore.users
+const WarningStore = useWarningStore()
+const PersonStore = usePersonStore()
+const NavigationStore = useNavigationStore()
 
-const router = useRouter()
+const addPerson = (person) => {
+     PersonStore.addPerson(person)
+}
 
-const goToAddDishesPage = () => {
-     if (users.length < 2) {
-          MyStore.showWarning('Добавьте как-минимум 2 человека!')
+const goToAddDishes = () => {
+     if (PersonStore.users.value.length < 2) {
+          WarningStore.showWarning('Добавьте хотя бы 2 человека!')
      }  
      else {
-          router.push('/AddDishes')
+          NavigationStore.goToAddDishesPage()
      }
 }
 
 </script>
 
 <style lang="scss" scoped>
-.add-person {
-     &__title {
-          display: flex;
-     }
-}
-
 .persons-list {
      min-height: 60vh;
 }
-
-
 </style>

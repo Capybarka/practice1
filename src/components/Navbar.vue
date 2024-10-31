@@ -1,34 +1,46 @@
 <template>
+  <v-container>
     <v-row justify="center">
         <v-col >
-          <div class="header__container">
-            <h1 class="title">Делим Счёт</h1>
-            <div class="header__btns">
-              <v-btn variant="tonal" class="mr-5" icon>
-                <v-icon>mdi-home</v-icon>
-              </v-btn>
+          <div class="d-flex justify-center align-center justify-space-between">
+            <div class="d-flex align-center">
+              <v-icon 
+                class="mr-1"
+                color="primary"
+              > 
+                mdi-credit-card-check-outline
+              </v-icon>
+              <h2 
+                class="title cursor-pointer"
+                @click="NavigationStore.goToHomePage"  
+              >
+                Чекдели
+              </h2>
+            </div>
 
-              <v-btn variant="tonal" class="mr-5" icon>
-                <v-icon>mdi-account</v-icon>
-              </v-btn>
-        
-              <v-btn @click="toggleTheme" variant="tonal" icon>
-                <v-icon>mdi-flare</v-icon>
+            <div>
+              <v-btn 
+                variant="tonal" 
+                icon
+                @click="toggleTheme" 
+              >
+                <v-icon>mdi-theme-light-dark</v-icon>
               </v-btn>
             </div>
           </div>
         </v-col>
       </v-row>
+    </v-container>
 </template>
 
 <script setup>
-defineOptions({
-     name: 'nav-bar'
-})
 import { useTheme } from 'vuetify'
 import { onMounted, reactive, ref, watch } from 'vue'
+import {useNavigationStore} from '../stores/NavigationStore'
 
 const theme = useTheme()
+
+const NavigationStore = useNavigationStore()
 
 const isDarkTheme  = ref(true)
 const themeColors = reactive({});
