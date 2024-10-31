@@ -13,14 +13,14 @@
           >
                <PersonForm
                     class="mb-10"
-                    :add-person-emit="addPerson"
+                    @add-person-emit="addPerson"
                /> 
-               <empty-message v-show="PersonStore.users.length === 0">Пока никого нет</empty-message>
+               <empty-message v-show="PersonStore.persons.length === 0">Пока никого нет</empty-message>
                <person-card
-                    v-for="user in PersonStore.users.value"
+                    v-for="person in PersonStore.persons"
                     class="mb-5"
-                    :key="user.id"
-                    :user="user"
+                    :key="person.id"
+                    :person="person"
                >
                </person-card>                      
           </v-sheet>
@@ -62,10 +62,11 @@ const NavigationStore = useNavigationStore()
 
 const addPerson = (person) => {
      PersonStore.addPerson(person)
+     console.log(PersonStore.persons)
 }
 
 const goToAddDishes = () => {
-     if (PersonStore.users.value.length < 2) {
+     if (PersonStore.persons.length < 2) {
           WarningStore.showWarning('Добавьте хотя бы 2 человека!')
      }  
      else {

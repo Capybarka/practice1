@@ -32,5 +32,9 @@ html {
 }
 
 .text-primary {
-  color: #e9774f;
+  color: #e96e43;
+}
+
+.min-height-50per {
+  min-height: 50vh;
 }/*# sourceMappingURL=main.css.map */

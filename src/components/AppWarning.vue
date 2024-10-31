@@ -1,7 +1,7 @@
 <template>
     <v-alert 
           v-if="WarningStore.isShowWarning"
-          class="warning w-50 position-fixed bottom-0"
+          class="warning w-50 position-fixed bottom-1"
           :type="warningType">
           <v-alert-title class="warning_text">{{ warningText }}</v-alert-title>
      </v-alert>

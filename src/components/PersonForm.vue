@@ -15,10 +15,11 @@
 
           <v-row justify="center">
                <v-col cols="11">
-                    <v-btn @click="addPerson"
+                    <v-btn 
                          block
                          color="primary"
-                         class="add-btn" 
+                         class="font-weight-bold" 
+                         @click="addPerson"
                     >
                          Добавить
                     </v-btn>
@@ -30,36 +31,26 @@
 
 <script setup>
 import {ref, reactive} from 'vue'
-import {usePersonStore} from '../stores/PersonStore'
+import { useWarningStore } from '../stores/WarningStore';
+
 import {defineEmits} from 'vue'
 
-const PersonStore = usePersonStore()
+const WarningStore = useWarningStore()
 
 const personName = ref('')
-const personId = ref(1)
 
 const emit = defineEmits(['add-person-emit'])
 
 const addPerson = () => {
-    if (personName.value) {
+     if (personName.value) {
           emit('add-person-emit', {
-               id: personId.value,
+               id: Date.now(),
                name: personName.value
-          } )
-          // PersonStore.addUser({
-              
-          // })
-          personId.value++
+          })
           personName.value = ''
-    }
-    else {
-          PersonStore.showWarning('Введите имя!')
-    }
+     }
+     else {
+          WarningStore.showWarning('Введите имя!')
+     }
 }
 </script>
-
-<style lang="scss" scoped>
-.add-btn {
-     font-weight: 600;
-}
-</style>

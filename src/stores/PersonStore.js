@@ -1,34 +1,34 @@
 import { defineStore } from "pinia";    
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 export const usePersonStore = defineStore('PersonStore', () => {
-
-     const users = ref([])
+    
+     const persons = ref([])
 
      const loadUsersFromStorage = () => {
-          const storedUsers = localStorage.getItem('users')
-          if (storedUsers) {
-               users.value.push(...JSON.parse(storedUsers))
+          const storedPersons = localStorage.getItem('persons')
+          if (storedPersons) {
+               persons.value.push(...JSON.parse(storedPersons))
           }
      }
 
      loadUsersFromStorage()
 
-     const addPerson = (user) => {
-          users.value.push(user)
-          localStorage.setItem('users', JSON.stringify(users.value)); 
+     const addPerson = (person) => {
+          persons.value.push(person)
+          localStorage.setItem('persons', JSON.stringify(persons.value)); 
      }
 
      const deleteUser = (id) => {
-          const idx = users.value.findIndex(user => user.id === id)
+          const idx = persons.value.findIndex(user => user.id === id)
           if (idx !== -1) {
-               users.value.splice(idx, 1)
-               localStorage.setItem('users', JSON.stringify(users.value));
+               persons.value.splice(idx, 1)
+               localStorage.setItem('persons', JSON.stringify(persons.value));
           }
      }
 
      return {
-          users,
+          persons,
           addPerson,
           loadUsersFromStorage,
           deleteUser

@@ -8,7 +8,7 @@
             <AppInstruction />
           </v-col>
         </v-row>
-
+        
         <div class="d-flex justify-center">
           <v-btn 
             color="primary"
