@@ -17,7 +17,13 @@
 
           <v-row justify="center">
                <v-col cols="auto">
-                    <v-btn variant="outlined" color="primary">На главную</v-btn>
+                    <v-btn 
+                         variant="outlined" 
+                         color="primary"
+                         @click="NavigationStore.goToHomePage"
+                    >
+                         На главную
+                    </v-btn>
                </v-col>
           </v-row>
          
@@ -25,7 +31,9 @@
 </template>
 
 <script setup>
+import {useNavigationStore} from '../stores/NavigationStore'
 
+const NavigationStore = useNavigationStore()
 </script>
 
 <style lang="scss" scoped>

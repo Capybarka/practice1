@@ -45,10 +45,11 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
 import { useWarningStore } from '../stores/WarningStore'
 import { useMyStore } from '../stores/MyStore'
+import { useNavigationStore } from '../stores/NavigationStore'
 
 import PersonForm from '../components/PersonForm.vue';
 import PersonCard from '../components/PersonCard.vue';
@@ -56,15 +57,17 @@ import AppWarning from '../components/AppWarning.vue'
 
 const MyStore = useMyStore()
 const WarningStore = useWarningStore()
+const NavigationStore = useNavigationStore()
 
-const router = useRouter()
+// const router = useRouter()
 
 const goToAddDishesPage = () => {
      if (MyStore.users.length < 2) {
           WarningStore.showWarning('Добавьте как-минимум 2 человека!')
      }  
      else {
-          router.push('/AddDishes')
+          // router.push('/AddDishes')
+          NavigationStore.goToAddDishesPage()
      }
 }
 

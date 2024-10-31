@@ -10,7 +10,13 @@
               > 
                 mdi-credit-card-check-outline
               </v-icon>
-              <h2 class="title">Чекдели</h2>
+              <h2 
+                class="title"
+                style="cursor: pointer"
+                @click="NavigationStore.goToHomePage"  
+              >
+                Чекдели
+              </h2>
             </div>
 
             <div>
@@ -31,8 +37,11 @@
 <script setup>
 import { useTheme } from 'vuetify'
 import { onMounted, reactive, ref, watch } from 'vue'
+import {useNavigationStore} from '../stores/NavigationStore'
 
 const theme = useTheme()
+
+const NavigationStore = useNavigationStore()
 
 const isDarkTheme  = ref(true)
 const themeColors = reactive({});
