@@ -18,7 +18,7 @@
           </v-text-field>
 
           <v-card variant="tonal" class="px-10 py-5 mb-5">
-               <v-row align="center">
+               <v-row class="align-center">
                     <v-col cols="auto">
                          <v-btn
                               @click="dialog = true"
@@ -84,10 +84,6 @@
 <script setup>
 import {ref, reactive } from 'vue';
 import { useMyStore } from '../stores/MyStore';
-
-defineOptions({
-     name: 'dish-card'
-})
 
 const dialog = ref(false)
 

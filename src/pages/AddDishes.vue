@@ -2,7 +2,7 @@
     <div >
           <v-sheet 
                class="d-flex pa-4 my-5 align-center rounded-xl elevation-5" 
-               color="background-light">
+               color="background-dark">
                <p class="text-primary font-weight-bold">Добавьте блюда</p>
                <v-spacer />
                <v-btn 
@@ -13,21 +13,25 @@
                </v-btn>
           </v-sheet>
 
-          <v-card
-               variant="tonal"
-               class="min-height-50per pa-5 mb-5"
+          <v-sheet
+               color="background-dark"
+               class="min-height-50per pa-5 mb-5 rounded-xl elevation-5"
                elevation="10">
                
                <empty-message>Пока ничего нет</empty-message>
 
-               <dish-card class="mb-5"></dish-card>
-          </v-card>
+               <dish-card 
+                    v-for="dish in DishStore.dishes"
+                    class="mb-5"
+               >
+               </dish-card>
+          </v-sheet>
 
           <v-row justify="center">
                <v-col cols="12">
-                    <v-card
-                         variant="tonal"
-                         class="elevation-10 pa-4">
+                    <v-sheet
+                         color="background-dark"
+                         class="pa-4 rounded-xl elevation-5">
                          <div class="d-flex flex-lg-column align-center">
                               <p class="mb-5">Промежуточный итог:</p>
                               <p class="total_info">
@@ -35,7 +39,7 @@
                                    <v-icon>mdi-currency-rub</v-icon>
                               </p>
                          </div>
-                    </v-card>
+                    </v-sheet>
                </v-col>
           </v-row>
 
@@ -65,10 +69,13 @@
 
 <script setup>
 import {useNavigationStore} from '../stores/NavigationStore'
+import {useDishStore} from '../stores/DishStore'
+
 import EmptyMessage from '../components/EmptyMessage.vue'
+import DishCard from '../components/DishCard.vue'
 
 const NavigationStore = useNavigationStore()
-
+const DishStore = useDishStore()
 </script>
 
 <style lang="scss" scoped>
