@@ -3,7 +3,7 @@
           <v-sheet 
                class="d-flex pa-4 my-5 align-center rounded-xl elevation-5" 
                color="background-dark">
-               <p class="text-primary font-weight-bold">Добавьте блюда</p>
+               <p class="text-primary font-weight-bold px-4">Добавьте блюда</p>
                <v-spacer />
                <v-btn 
                     variant="tonal" 
@@ -19,6 +19,11 @@
                elevation="10">
                
                <empty-message>Пока ничего нет</empty-message>
+
+               <dish-card 
+                    class="mb-5"
+               >
+               </dish-card>
 
                <dish-card 
                     v-for="dish in DishStore.dishes"
@@ -77,6 +82,3 @@ import DishCard from '../components/DishCard.vue'
 const NavigationStore = useNavigationStore()
 const DishStore = useDishStore()
 </script>
-
-<style lang="scss" scoped>
-</style>
