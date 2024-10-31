@@ -11,8 +11,7 @@
                 mdi-credit-card-check-outline
               </v-icon>
               <h2 
-                class="title"
-                style="cursor: pointer"
+                class="title cursor-pointer"
                 @click="NavigationStore.goToHomePage"  
               >
                 Чекдели

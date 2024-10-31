@@ -1,8 +1,8 @@
 <template>
      <div>
           <v-sheet 
-               class="add-person__title pa-4 mb-5 elevation-5" 
-               color="background-dark rounded-xl"
+               class="add-person__title pa-4 mb-5 elevation-5 rounded-xl" 
+               color="background-dark"
           >
                <p class="text-primary font-weight-bold">Добавьте участников</p>
           </v-sheet>
@@ -53,7 +53,8 @@ import { useNavigationStore } from '../stores/NavigationStore'
 
 import PersonForm from '../components/PersonForm.vue';
 import PersonCard from '../components/PersonCard.vue';
-import AppWarning from '../components/AppWarning.vue'
+import AppWarning from '../components/AppWarning.vue';
+import EmptyMessage from '../components/EmptyMessage.vue';
 
 const MyStore = useMyStore()
 const WarningStore = useWarningStore()

@@ -1,17 +1,17 @@
 <template>
     <div >
-          <v-card 
-               class="d-flex pa-4 my-5" 
+          <v-sheet 
+               class="d-flex pa-4 my-5 align-center rounded-xl elevation-5" 
                color="background-light">
-               <v-card-title>Добавьте блюда</v-card-title>
+               <p class="text-primary font-weight-bold">Добавьте блюда</p>
                <v-spacer />
                <v-btn 
                     variant="tonal" 
                     icon
                >
-                    <v-icon>mdi-plus-box</v-icon>
+                    <v-icon color="primary">mdi-plus-box</v-icon>
                </v-btn>
-          </v-card>
+          </v-sheet>
 
           <v-card
                variant="tonal"
@@ -65,6 +65,7 @@
 
 <script setup>
 import {useNavigationStore} from '../stores/NavigationStore'
+import EmptyMessage from '../components/EmptyMessage.vue'
 
 const NavigationStore = useNavigationStore()
 
