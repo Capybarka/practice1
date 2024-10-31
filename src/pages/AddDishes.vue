@@ -1,5 +1,5 @@
 <template>
-    <div class="addDishes__wrapper" >
+    <div>
           <v-card 
                class="addDishes__title pa-4 my-5" 
                color="background-light">
