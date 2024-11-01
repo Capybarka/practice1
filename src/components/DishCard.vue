@@ -22,17 +22,21 @@
 
           <div class="mb-5">
                <v-row>
-                    <v-col cols="auto">
+                    <v-col 
+                         cols="auto" 
+                         class="align-center"
+                    >
                          <v-btn
                               @click="dialog = true"
-                              color="primary">
+                              class="mr-5"
+                              color="primary"
+                         >
                               <v-icon class="mr-3">mdi-cursor-default-click</v-icon>
                               Выберите плательщика
                          </v-btn>
-
                          <span 
                               v-show="selectedPayer" 
-                              class="mx-5">
+                              class="ml-1">
                               Платил: {{ selectedPayer }}
                          </span>
                     </v-col>
@@ -110,7 +114,7 @@
 </template>
 
 <script setup>
-import {ref, reactive } from 'vue';
+import {ref } from 'vue';
 import { usePersonStore } from '../stores/PersonStore';
 import { useDishStore } from '../stores/DishStore';
 
@@ -127,10 +131,9 @@ const deleteDish = (dish) => {
      DishStore.deleteDish(dish.id)
 }
 
-
 const dialog = ref(false)
 
-const selectedPayer = ref(null); // кто платил
+const selectedPayer = ref(null);
 
 const selectedUsers = ref([]);
 
