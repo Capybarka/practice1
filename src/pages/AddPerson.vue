@@ -11,7 +11,10 @@
       class="persons-list pa-5 mb-10 rounded-xl elevation-5"
       color="background-dark"
     >
-      <PersonForm class="mb-10" @add-person-emit="addPerson" />
+      <PersonForm 
+        class="mb-10" 
+        @add-person-emit="addPerson" 
+      />
       <empty-message v-if="PersonStore.persons.length === 0"
         >Пока никого нет</empty-message
       >
@@ -83,3 +86,4 @@ const goToAddDishes = () => {
   min-height: 60vh;
 }
 </style>
+

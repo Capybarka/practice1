@@ -28,20 +28,18 @@
       >
       </dish-card>
     </v-sheet>
-
-    <v-row justify="center">
-      <v-col cols="12">
-        <v-sheet color="background-dark" class="pa-4 rounded-xl elevation-5">
-          <div class="d-flex flex-lg-column align-center">
-            <p class="mb-5">Промежуточный итог:</p>
-            <p>
-              {{}}
-              <v-icon>mdi-currency-rub</v-icon>
-            </p>
-          </div>
-        </v-sheet>
-      </v-col>
-    </v-row>
+  
+    <v-sheet 
+      color="background-dark" 
+      class="d-flex flex-column pa-4 rounded-xl elevation-5 mb-10 align-center"
+    >
+      <p class="mb-5 text-h5 text-center">Промежуточный итог:</p>
+      <div class="d-flex">
+        <p>{{ 0 }}</p>
+        <v-icon>mdi-currency-rub</v-icon>
+      </div>
+    </v-sheet>
+  
 
     <v-row justify="center">
       <v-col cols="auto">

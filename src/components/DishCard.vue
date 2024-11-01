@@ -1,5 +1,8 @@
 <template>
-  <v-sheet color="background-light" class="pa-5 rounded-xl">
+  <v-sheet 
+    color="background-light" 
+    class="pa-5 rounded-xl"
+  >
     <v-text-field label="Название">
       <template v-slot:prepend>
         <v-icon> mdi-food-fork-drink </v-icon>
@@ -14,14 +17,30 @@
 
     <div class="mb-5">
       <v-row>
-        <v-col cols="auto" class="align-center">
-          <v-btn @click="dialog = true" class="mr-5" color="primary">
-            <v-icon class="mr-3">mdi-cursor-default-click</v-icon>
-            Выберите плательщика
-          </v-btn>
-          <span v-show="selectedPayer" class="ml-1">
-            Платил: {{ selectedPayer }}
-          </span>
+        <v-col 
+          cols="auto" 
+          class="align-center"
+        >
+            <v-chip
+              prepend-icon="mdi-wallet"          
+              variant="flat"
+              size="large"
+              class="font-weight-bold mr-5 cursor-pointer elevation-5"
+              color="primary"
+            >
+              {{ selectedPayer.name }}
+            </v-chip>
+            
+            <v-btn 
+              class="mr-5 elevation-3" 
+              color="primary"
+              variant="outlined"
+              @click="dialog = true"
+            >
+              <v-icon class="mr-3">mdi-cursor-default-click</v-icon>
+              Изменить плательщика
+            </v-btn>
+        
         </v-col>
       </v-row>
     </div>
@@ -38,14 +57,12 @@
 
         <v-expansion-panel-text>
           <div class="d-flex flex-wrap ga-8">
-            <v-checkbox
-              dense
-              color="primary"
-              v-model="selectedUsers"
-              :label="'Все'"
-              :value="'all'"
-            >
-            </v-checkbox>
+            <v-btn 
+              color="primary" 
+              class="align-center"
+            > 
+              Все 
+            </v-btn>
 
             <v-checkbox
               v-for="person in PersonStore.persons"
@@ -62,32 +79,44 @@
       </v-expansion-panel>
     </v-expansion-panels>
 
-    <v-dialog v-model="dialog" width="auto">
-      <v-card class="pa-10" color="background-light">
+    <v-dialog 
+    v-model="dialog" 
+    width="auto"
+    >
+      <v-card 
+      class="pa-10" 
+      color="background-light"
+      >
         <v-radio-group v-model="selectedPayer">
           <p class="font-weight-bold mb-5">
-            Выберите того, кто платил за блюдо
+            Выберите того, кто платил за это блюдо
           </p>
           <v-radio
             v-for="person in PersonStore.persons"
             :key="person.id"
             :label="person.name"
-            :value="person.name"
+            :value="person"
           >
           </v-radio>
         </v-radio-group>
       </v-card>
     </v-dialog>
 
-    <v-btn color="primary" variant="outlined" @click="deleteDish(dish)">
-      <span class="mr-2 font-weight-bold">Удалить блюдо</span>
-      <v-icon>mdi-delete</v-icon>
-    </v-btn>
+    <div class="w-100 align-center">
+      <v-btn icon
+        color="red" 
+        class="elevation-5"
+        @click="deleteDish(dish)"
+      >
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
+    </div>
+    
   </v-sheet>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { usePersonStore } from "../stores/PersonStore";
 import { useDishStore } from "../stores/DishStore";
 
@@ -106,7 +135,11 @@ const deleteDish = (dish) => {
 
 const dialog = ref(false);
 
-const selectedPayer = ref(null);
+const selectedPayer = ref(PersonStore.persons[0]);
+
+watch(selectedPayer, (newValue) => {
+  console.log(newValue)
+})
 
 const selectedUsers = ref([]);
 </script>
