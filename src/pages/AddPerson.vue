@@ -38,16 +38,14 @@
           <p class="ml-5">Назад</p>
         </v-btn>
 
-        <v-btn color="primary" class="elevation-5" @click="goToAddDishes">
+        <v-btn 
+          color="primary" 
+          class="elevation-5" 
+          @click="goToAddDishes"
+        >
           <p class="mr-5">Далее</p>
           <v-icon>mdi-hand-pointing-right</v-icon>
         </v-btn>
-      </v-col>
-    </v-row>
-
-    <v-row class="warning-row">
-      <v-col>
-        <app-warning></app-warning>
       </v-col>
     </v-row>
   </div>
@@ -57,11 +55,9 @@
 import { useWarningStore } from "../stores/WarningStore";
 import { usePersonStore } from "../stores/PersonStore";
 import { useNavigationStore } from "../stores/NavigationStore";
-import { onMounted } from "vue";
 
 import PersonForm from "../components/PersonForm.vue";
 import PersonCard from "../components/PersonCard.vue";
-import AppWarning from "../components/AppWarning.vue";
 import EmptyMessage from "../components/EmptyMessage.vue";
 
 const WarningStore = useWarningStore();

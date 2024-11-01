@@ -1,32 +1,27 @@
 <template>
-      <v-sheet 
-        color="background-light"
-        class="d-flex pa-5 rounded-xl elevation-10"
-      >
-      <!-- <v-chip 
-        color="primary"
-        class="pa-8 mr-4"  
-      >
-        <span class="large-text">
-          <slot name="number"></slot>
-        </span>
-      </v-chip>
+  <div class="d-flex ga-5">
+    <v-chip 
+      size="x-large"
+      variant="flat" 
+      color="primary"
+      class="align-center justify-center text-center d-none d-sm-flex"
+    >
+      <slot name="number"></slot>
+    </v-chip>
 
-     <div>
-       <p class="medium-text font-weight-bold mb-3 text-primary text-center">
-         <slot name="title"></slot>
-       </p>
-          
-       <p class="text-center">
-          <slot name="subtitle"></slot>
-       </p>
-      </div> -->
-      
-        <p class="text-h3 text-primary">1</p>
+    <v-sheet 
+      color="background-light"
+      class="px-5 py-8 rounded-lg elevation-10 w-100"
+    >
+      <p class="text-primary font-weight-bold mb-4 text-sm-h5 text-md-h4">
+        <slot name="title"></slot>
+      </p>
+      <p> 
+        <slot name="subtitle" ></slot>
+      </p>
+  </v-sheet>
+  </div>
 
-    
-      
-    </v-sheet>
 </template>
 
 <script setup>

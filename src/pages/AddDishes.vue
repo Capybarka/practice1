@@ -7,7 +7,12 @@
       <p class="text-primary font-weight-bold px-4">Добавьте блюда</p>
       <v-spacer />
       <v-btn variant="tonal" icon>
-        <v-icon color="primary" @click="initDish"> mdi-plus-box </v-icon>
+        <v-icon 
+          color="primary" 
+          @click="initDish"
+        > 
+          mdi-plus-box 
+        </v-icon>
       </v-btn>
     </v-sheet>
 
@@ -43,14 +48,20 @@
 
     <v-row justify="center">
       <v-col cols="auto">
-        <v-btn color="primary" @click="NavigationStore.goToAddPersonPage">
+        <v-btn 
+          color="primary" 
+          @click="NavigationStore.goToAddPersonPage"
+        >
           <v-icon>mdi-hand-pointing-left</v-icon>
           <p class="ml-5">Назад</p>
         </v-btn>
       </v-col>
 
       <v-col cols="auto">
-        <v-btn color="primary" @click="NavigationStore.goToResultPage">
+        <v-btn 
+          color="primary" 
+          @click="NavigationStore.goToResultPage"
+        >
           <p class="mr-5">Далее</p>
           <v-icon>mdi-hand-pointing-right</v-icon>
         </v-btn>
