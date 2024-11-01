@@ -1,10 +1,10 @@
 <template>
-     <v-card 
-          variant="tonal" 
-          class="pa-4"
-     >
-          
-          <v-text-field label="Название">
+     <v-sheet 
+          color="background-light"
+          class="pa-5 rounded-xl"
+     >   
+          <v-text-field 
+               label="Название">
                <template v-slot:prepend>
                     <v-icon>
                          mdi-food-fork-drink
@@ -20,12 +20,11 @@
                </template>           
           </v-text-field>
 
-          <v-card variant="tonal" class="px-10 py-5 mb-5">
+          <div class="mb-5">
                <v-row>
                     <v-col cols="auto">
                          <v-btn
                               @click="dialog = true"
-                              
                               color="primary">
                               <v-icon class="mr-3">mdi-cursor-default-click</v-icon>
                               Выберите плательщика
@@ -38,11 +37,12 @@
                          </span>
                     </v-col>
                </v-row>
-          </v-card>
+          </div>
 
           <v-expansion-panels 
                bg-color="background-dark" 
                variant="accordion"
+               class="mb-5"
           >
                <v-expansion-panel >
                     <v-expansion-panel-title class="font-weight-bold">
@@ -95,14 +95,38 @@
                     </v-radio-group>
                </v-card>
           </v-dialog>
-     </v-card>
+
+          <v-btn
+               color="primary"
+               variant="outlined"
+               @click="deleteDish(dish)"
+          >
+               <span class="mr-3">Удалить блюдо</span>
+               <v-icon>mdi-delete</v-icon>
+          </v-btn>
+
+          
+     </v-sheet>
 </template>
 
 <script setup>
 import {ref, reactive } from 'vue';
 import { usePersonStore } from '../stores/PersonStore';
+import { useDishStore } from '../stores/DishStore';
 
+defineProps({
+     dish: {
+          type: Object,
+          required: true
+     }
+})
 const PersonStore = usePersonStore()
+const DishStore = useDishStore()
+
+const deleteDish = (dish) => {
+     DishStore.deleteDish(dish.id)
+}
+
 
 const dialog = ref(false)
 

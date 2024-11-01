@@ -29,8 +29,6 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 
-
-
 const goToAddPesonPage = () => router.push('/AddPerson')
 
 </script>

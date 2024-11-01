@@ -23,16 +23,13 @@
                class="min-height-50per pa-5 mb-5 rounded-xl elevation-5"
                elevation="10">
                
-               <empty-message>Пока ничего нет</empty-message>
-
-               <dish-card 
-                    class="mb-5"
-               >
-               </dish-card>
+               <empty-message v-if="DishStore.dishes.length === 0">Пока ничего нет</empty-message>
 
                <dish-card 
                     v-for="dish in DishStore.dishes"
-                    class="mb-5"
+                    :key="dish"
+                    :dish="dish"
+                    class="mb-10 elevation-10"
                >
                </dish-card>
           </v-sheet>
@@ -45,7 +42,7 @@
                          <div class="d-flex flex-lg-column align-center">
                               <p class="mb-5">Промежуточный итог:</p>
                               <p class="total_info">
-                                   {{ 0 }}
+                                   {{  }}
                                    <v-icon>mdi-currency-rub</v-icon>
                               </p>
                          </div>
@@ -55,22 +52,22 @@
 
           <v-row justify="center">
                <v-col cols="auto">
-                    <v-btn 
-                         variant="outlined" 
+                    <v-btn             
                          color="primary"
                          @click="NavigationStore.goToAddPersonPage" 
                     >
-                         Назад
+                         <v-icon>mdi-hand-pointing-left</v-icon>
+                         <p class="ml-5">Назад</p>
                     </v-btn>
                </v-col>
 
                <v-col cols="auto">
-                    <v-btn 
-                         variant="outlined" 
+                    <v-btn                        
                          color="primary"
                          @click="NavigationStore.goToResultPage" 
                     >
-                         Далее
+                         <p class="mr-5">Далее</p>
+                         <v-icon>mdi-hand-pointing-right</v-icon>
                     </v-btn>
                </v-col>
           </v-row> 
@@ -83,6 +80,7 @@ import {useDishStore} from '../stores/DishStore'
 
 import EmptyMessage from '../components/EmptyMessage.vue'
 import DishCard from '../components/DishCard.vue'
+import { onMounted } from 'vue';
 
 const NavigationStore = useNavigationStore()
 const DishStore = useDishStore()
@@ -90,4 +88,8 @@ const DishStore = useDishStore()
 const initDish = () => {
      DishStore.initDish()
 }
+
+onMounted(() => {
+     DishStore.loadDishesFromStorage()
+})
 </script>

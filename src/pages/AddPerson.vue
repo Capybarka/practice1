@@ -15,7 +15,7 @@
                     class="mb-10"
                     @add-person-emit="addPerson"
                /> 
-               <empty-message v-show="PersonStore.persons.length === 0">Пока никого нет</empty-message>
+               <empty-message v-if="PersonStore.persons.length === 0">Пока никого нет</empty-message>
                <person-card
                     v-for="person in PersonStore.persons"
                     class="mb-5"
@@ -59,6 +59,7 @@
 import { useWarningStore } from '../stores/WarningStore'
 import { usePersonStore } from '../stores/PersonStore'
 import { useNavigationStore } from '../stores/NavigationStore'
+import { onMounted } from 'vue';
 
 import PersonForm from '../components/PersonForm.vue';
 import PersonCard from '../components/PersonCard.vue';
@@ -82,6 +83,9 @@ const goToAddDishes = () => {
      }
 }
 
+onMounted(() => {
+    PersonStore.loadUsersFromStorage();
+});
 
 </script>
 
