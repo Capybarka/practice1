@@ -60,18 +60,19 @@
             <v-btn 
               color="primary" 
               class="align-center"
+              @click="checkedAllPersons"
             > 
-              Все 
+              {{ allPersonsSelected ? 'Отменить выбор': 'Все' }}
             </v-btn>
 
             <v-checkbox
               v-for="person in PersonStore.persons"
-              v-model="selectedUsers"
+              v-model="selectedPersons"
               dense
               color="primary"
               :key="person.id"
               :label="person.name"
-              :value="person.name"
+              :value="person"
             >
             </v-checkbox>
           </div>
@@ -102,8 +103,9 @@
       </v-card>
     </v-dialog>
 
-    <div class="w-100 align-center">
-      <v-btn icon
+    <div class="d-flex justify-center">
+      <v-btn 
+        icon
         color="red" 
         class="elevation-5"
         @click="deleteDish(dish)"
@@ -126,20 +128,46 @@ defineProps({
     required: true,
   },
 });
+
 const PersonStore = usePersonStore();
 const DishStore = useDishStore();
+
+const dialog = ref(false);
 
 const deleteDish = (dish) => {
   DishStore.deleteDish(dish.id);
 };
 
-const dialog = ref(false);
 
 const selectedPayer = ref(PersonStore.persons[0]);
 
+// просто просмотр плательщика
 watch(selectedPayer, (newValue) => {
   console.log(newValue)
 })
 
-const selectedUsers = ref([]);
+const selectedPersons = ref([]);
+const allPersonsSelected = ref(false)
+
+watch(selectedPersons, (newValue) => {
+  if (newValue.length === PersonStore.persons.length) {
+    allPersonsSelected.value = true
+    console.log(newValue)
+  }
+  else {
+    allPersonsSelected.value = false
+    console.log(newValue)
+  }
+  
+})
+
+const checkedAllPersons = () => {
+  if (allPersonsSelected.value) {
+    selectedPersons.value = []
+  }
+  else {
+    selectedPersons.value = [...PersonStore.persons]
+  }
+  
+}
 </script>
