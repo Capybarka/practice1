@@ -1,7 +1,7 @@
 <template>
-  <v-app class="pa-5">
+  <v-app class="pt-5">
     <Navbar />
-    <v-main class="position-relative">
+    <v-main >
       <v-container>
         <router-view />
       </v-container>

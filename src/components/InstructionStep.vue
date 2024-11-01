@@ -17,7 +17,7 @@
         <slot name="title"></slot>
       </p>
       <p> 
-        <slot name="subtitle" ></slot>
+        <slot name="subtitle"></slot>
       </p>
   </v-sheet>
   </div>

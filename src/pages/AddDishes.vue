@@ -38,7 +38,7 @@
       color="background-dark" 
       class="d-flex flex-column pa-4 rounded-xl elevation-5 mb-10 align-center"
     >
-      <p class="mb-5 text-h5 text-center">Промежуточный итог:</p>
+      <p class="mb-5 text-center text-lg-h5 text-sm-h6">Промежуточный итог:</p>
       <div class="d-flex">
         <p>{{ 0 }}</p>
         <v-icon>mdi-currency-rub</v-icon>
