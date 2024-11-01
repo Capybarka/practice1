@@ -13,6 +13,20 @@
 
 <script setup>
 import Navbar from './components/Navbar.vue' 
+import {usePersonStore} from './stores/PersonStore'
+import {useDishStore} from './stores/DishStore'
 
+import { onMounted } from 'vue';
+
+const PersonStore = usePersonStore()
+const DishStore = useDishStore()
+
+onMounted(() => {
+    PersonStore.loadUsersFromStorage();
+});
+
+onMounted(() => {
+     DishStore.loadDishesFromStorage()
+})
 </script>
 

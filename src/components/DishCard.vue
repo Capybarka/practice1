@@ -54,27 +54,27 @@
                     </v-expansion-panel-title>
 
                     <v-expansion-panel-text>
-                              <div class="d-flex flex-wrap ga-8">
-                                   <v-checkbox
-                                        dense
-                                        color="primary"
-                                        v-model="selectedUsers"
-                                        :label="'Все'"
-                                        :value="'all'"
-                                   >
-                                   </v-checkbox>
+                         <div class="d-flex flex-wrap ga-8">
+                              <v-checkbox
+                                   dense
+                                   color="primary"
+                                   v-model="selectedUsers"
+                                   :label="'Все'"
+                                   :value="'all'"
+                              >
+                              </v-checkbox>
 
-                                   <v-checkbox
-                                        v-for="person in PersonStore.persons"
-                                        v-model="selectedUsers"
-                                        dense
-                                        color="primary"
-                                        :key="person.id"
-                                        :label="person.name"
-                                        :value="person.name"                                       
-                                   >
-                                   </v-checkbox>
-                              </div>
+                              <v-checkbox
+                                   v-for="person in PersonStore.persons"
+                                   v-model="selectedUsers"
+                                   dense
+                                   color="primary"
+                                   :key="person.id"
+                                   :label="person.name"
+                                   :value="person.name"                                       
+                              >
+                              </v-checkbox>
+                         </div>
                     </v-expansion-panel-text>
                </v-expansion-panel>
           </v-expansion-panels>

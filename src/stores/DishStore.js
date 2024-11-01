@@ -20,9 +20,9 @@ export const useDishStore = defineStore('DishStore', {
         },
 
         loadDishesFromStorage() {
-            const storedPersons = localStorage.getItem('persons');
-              if (storedPersons) {
-                  this.dishes.push(...JSON.parse(storedPersons));
+            const storedDishes = localStorage.getItem('dishes');
+              if (storedDishes) {
+                  this.dishes.push(...JSON.parse(storedDishes));
               }
         },
 

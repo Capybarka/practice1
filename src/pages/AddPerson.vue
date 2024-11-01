@@ -83,9 +83,7 @@ const goToAddDishes = () => {
      }
 }
 
-onMounted(() => {
-    PersonStore.loadUsersFromStorage();
-});
+
 
 </script>
 

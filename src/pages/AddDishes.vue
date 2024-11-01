@@ -41,7 +41,7 @@
                          class="pa-4 rounded-xl elevation-5">
                          <div class="d-flex flex-lg-column align-center">
                               <p class="mb-5">Промежуточный итог:</p>
-                              <p class="total_info">
+                              <p>
                                    {{  }}
                                    <v-icon>mdi-currency-rub</v-icon>
                               </p>
@@ -89,7 +89,5 @@ const initDish = () => {
      DishStore.initDish()
 }
 
-onMounted(() => {
-     DishStore.loadDishesFromStorage()
-})
+
 </script>
