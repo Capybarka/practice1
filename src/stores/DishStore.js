@@ -14,6 +14,7 @@ export const useDishStore = defineStore("DishStore", {
         name: "",
         price: "",
         payer: {},
+        users: []
       };
       this.dishes.push(newDish);
       localStorage.setItem("dishes", JSON.stringify(this.dishes));

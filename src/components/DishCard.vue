@@ -15,34 +15,27 @@
       </template>
     </v-text-field>
 
-    <div class="mb-5">
-      <v-row>
-        <v-col 
-          cols="auto" 
-          class="align-center"
+    <div class="d-flex flex-wrap ga-5 mb-5 justify-center">
+      <div class="">
+        <v-chip
+          prepend-icon="mdi-wallet"          
+          variant="flat"
+          size="large"
+          class="font-weight-bold mr-5 cursor-pointer elevation-5"
+          color="primary"
         >
-            <v-chip
-              prepend-icon="mdi-wallet"          
-              variant="flat"
-              size="large"
-              class="font-weight-bold mr-5 cursor-pointer elevation-5"
-              color="primary"
-            >
-              {{ selectedPayer.name }}
-            </v-chip>
-            
-            <v-btn 
-              class="mr-5 elevation-3" 
-              color="primary"
-              variant="outlined"
-              @click="dialog = true"
-            >
-              <v-icon class="mr-3">mdi-cursor-default-click</v-icon>
-              Изменить плательщика
-            </v-btn>
-        
-        </v-col>
-      </v-row>
+          {{ selectedPayer.name }}
+        </v-chip>
+      </div>
+      <v-btn 
+        class="mr-5 elevation-3" 
+        color="primary"
+        variant="outlined"
+        @click="dialog = true"
+      >
+        <v-icon class="mr-3">mdi-cursor-default-click</v-icon>
+        Изменить плательщика
+      </v-btn>
     </div>
 
     <v-expansion-panels
@@ -59,12 +52,11 @@
           <div class="d-flex flex-wrap ga-8">
             <v-btn 
               color="primary" 
-              class="align-center"
+              class="align-center mt-2"
               @click="checkedAllPersons"
             > 
               {{ allPersonsSelected ? 'Отменить выбор': 'Все' }}
             </v-btn>
-
             <v-checkbox
               v-for="person in PersonStore.persons"
               v-model="selectedPersons"
@@ -138,27 +130,18 @@ const deleteDish = (dish) => {
   DishStore.deleteDish(dish.id);
 };
 
-
 const selectedPayer = ref(PersonStore.persons[0]);
 
-// просто просмотр плательщика
-watch(selectedPayer, (newValue) => {
-  console.log(newValue)
-})
-
-const selectedPersons = ref([]);
+const selectedPersons = ref([]); // 
 const allPersonsSelected = ref(false)
 
 watch(selectedPersons, (newValue) => {
   if (newValue.length === PersonStore.persons.length) {
     allPersonsSelected.value = true
-    console.log(newValue)
   }
   else {
     allPersonsSelected.value = false
-    console.log(newValue)
   }
-  
 })
 
 const checkedAllPersons = () => {
@@ -168,6 +151,5 @@ const checkedAllPersons = () => {
   else {
     selectedPersons.value = [...PersonStore.persons]
   }
-  
 }
 </script>
